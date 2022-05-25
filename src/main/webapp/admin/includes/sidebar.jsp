@@ -46,7 +46,7 @@
                     <a href="/admin/products/list" class="nav-link">
                         <i class="nav-icon fas fa-solid fa-graduation-cap"></i>
                         <p>
-                            Products
+                            Product
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -60,7 +60,7 @@
                         <li class="nav-item">
                             <a href="/admin/products/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List products</p>
+                                <p>List product</p>
                             </a>
                         </li>
                     </ul>

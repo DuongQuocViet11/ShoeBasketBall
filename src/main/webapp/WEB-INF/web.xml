@@ -5,10 +5,42 @@
          version="4.0">
     <servlet>
         <servlet-name>ListProductServlet</servlet-name>
-        <servlet-class>com.shoebasketball.shoebasketball.controller.admin.ListProductServlet</servlet-class>
+        <servlet-class>com.shoebasketball.shoebasketball.controller.admin.product.ListProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ListProductServlet</servlet-name>
         <url-pattern>/admin/products/list</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <servlet-class>com.shoebasketball.shoebasketball.controller.admin.product.CreateProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <url-pattern>/admin/products/create</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DetailProductServlet</servlet-name>
+        <servlet-class>com.shoebasketball.shoebasketball.controller.admin.product.DetailProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DetailProductServlet</servlet-name>
+        <url-pattern>/admin/products/detail</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteProductServlet</servlet-name>
+        <servlet-class>com.shoebasketball.shoebasketball.controller.admin.product.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteProductServlet</servlet-name>
+        <url-pattern>/admin/products/delete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditProductServlet</servlet-name>
+        <servlet-class>com.shoebasketball.shoebasketball.controller.admin.product.EditProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditProductServlet</servlet-name>
+        <url-pattern>/admin/products/edit</url-pattern>
     </servlet-mapping>
 </web-app>

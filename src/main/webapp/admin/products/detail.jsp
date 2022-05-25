@@ -1,24 +1,27 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.shoebasketball.shoebasketball.entity.Product" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.shoebasketball.shoebasketball.entity.Product" %><%--
+  Created by IntelliJ IDEA.
+  User: DELL
+  Date: 5/14/2022
+  Time: 9:47 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%
-    List<Product> list =  (List<Product>) request.getAttribute("list");
-    if(list == null){
-        list = new ArrayList<>();
-    }
+    Product product = (Product) request.getAttribute("product");
 %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <jsp:include page="/admin/includes/head.jsp"></jsp:include>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <!-- Navbar -->
     <jsp:include page="/admin/includes/navbar.jsp"></jsp:include>
+
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
     <jsp:include page="/admin/includes/sidebar.jsp"></jsp:include>
+
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -27,12 +30,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>List Product</h1>
+                        <h1>Detail Product</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/admin/products/list">Product</a></li>
-                            <li class="breadcrumb-item active">List Product</li>
+                            <li class="breadcrumb-item"><a href="/admin/customers/list">Product Management</a></li>
+                            <li class="breadcrumb-item active">Details</li>
                         </ol>
                     </div>
                 </div>
@@ -46,48 +49,50 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">List Product</h3>
+                                <h3 class="card-title">Detail Product</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th>Product ID</th>
+                                        <th>Category ID</th>
                                         <th>Name</th>
-                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Detail</th>
                                         <th>Thumbnail</th>
+                                        <th>Price</th>
                                         <th>Created At</th>
-                                        <th>Action</th>
+                                        <th>Updated At</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <% for(Product obj: list){
-                                    %>
                                     <tr>
-                                        <td><%=obj.getId()%></td>
-                                        <td><%=obj.getName()%></td>
-                                        <td><%=obj.getPrice()%></td>
+                                        <td><%=product.getCategoryId()%></td>
+                                        <td><%=product.getName()%></td>
+                                        <td><%=product.getDescription()%></td>
+                                        <td><%=product.getDetail()%></td>
                                         <td>
-                                            <img class="img-bordered" src="<%=obj.getThumbnail()%>" alt="" width="150px">
+                                            <img class="img-bordered" src="<%=product.getThumbnail()%>" alt="" width="150px">
                                         </td>
-                                        <td><%=obj.getCreatedAt()%></td>
-                                        <td>
-                                            <a href="/admin/products/detail?id=<%=obj.getId()%>">Detail</a>&nbsp;&nbsp;
-                                            <a href="/admin/products/edit?id=<%=obj.getId()%>">Edit</a>&nbsp;&nbsp;
-                                            <a href="/admin/products/delete?id=<%=obj.getId()%>" onclick="return confirm('Are you sure?')">Delete</a>
-                                        </td>
+                                        <td><%=product.getPrice()%></td>
+                                        <td><%=product.getUpdatedAt()%></td>
+                                        <td><%=product.getUpdatedAt()%></td>
+                                        <td><%=product.getStatus()%></td>
                                     </tr>
-                                    <%}%>
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Product ID</th>
+                                        <th>Category ID</th>
                                         <th>Name</th>
-                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Detail</th>
                                         <th>Thumbnail</th>
+                                        <th>Price</th>
                                         <th>Created At</th>
-                                        <th>Action</th>
+                                        <th>Updated At</th>
+                                        <th>Status</th>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -96,17 +101,15 @@
                         </div>
                         <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <!--footer -->
     <jsp:include page="/admin/includes/footer.jsp"></jsp:include>
+
+
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
@@ -115,6 +118,7 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- jQuery -->
 <jsp:include page="/admin/includes/script.jsp"></jsp:include>
 </body>
 </html>

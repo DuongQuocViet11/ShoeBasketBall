@@ -1,37 +1,96 @@
 package com.shoebasketball.shoebasketball.entity;
 
+import com.shoebasketball.shoebasketball.entity.base.BaseEntity;
+import com.shoebasketball.shoebasketball.entity.myenum.CategoryStatus;
+import com.shoebasketball.shoebasketball.entity.myenum.ProductStatus;
 import com.shoebasketball.shoebasketball.ulti.DateTimeHelper;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 
-public class Product {
-    private String productId;
+public class Product extends BaseEntity {
+    private int id;
+    private int categoryId;
     private String name;
-    private double price;
+    private String description;
+    private String detail;
     private String thumbnail;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private int status;
+    private double price;
+    private ProductStatus status;
 
-    public Product(String productId, String name, double price, String thumbnail, LocalDateTime createdAt, LocalDateTime updatedAt, int status) {
-        this.productId = productId;
-        this.name = name;
-        this.price = price;
-        this.thumbnail = thumbnail;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
+    private HashMap<String, String> errors = new HashMap<>();
+
+    public HashMap<String, String> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(HashMap<String, String> errors) {
+        this.errors = errors;
+    }
+
+    public boolean isValid(){
+        checkValidate();
+        return errors.size() == 0;
+    }
+
+    private void checkValidate() {
+        //validate dữ liệu theo kiểu cùi bắp
+        if (name == null || name.length() == 0) {
+            errors.put("name", "Please enter name");
+        }
+        if (price == 0) {
+            errors.put("price", "Please enter price");
+        }
+        if (description == null || description.length() == 0) {
+            errors.put("description", "Please enter description");
+        }
+        if (thumbnail == null || thumbnail.length() == 0){
+            errors.put("thumbnail", "Please choose image");
+        }
+        if (detail == null || detail.length() == 0){
+            errors.put("detail", "Please enter detail");
+        }
     }
 
     public Product() {
+        this.name = "";
+        this.description = "";
+        this.detail = "";
+        this.price = 0;
+        this.thumbnail = "";
+        this.setCreatedAt(LocalDateTime.now());
+        this.setUpdatedAt(LocalDateTime.now());
+        this.status = ProductStatus.ACTIVE;
     }
 
-    public String getProductId() {
-        return productId;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", detail='" + detail + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                ", price=" + price +
+                ", status=" + status +
+                '}';
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -42,12 +101,20 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public String getThumbnail() {
@@ -58,47 +125,19 @@ public class Product {
         this.thumbnail = thumbnail;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public double getPrice() {
+        return price;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public int getStatus() {
+    public ProductStatus getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(ProductStatus status) {
         this.status = status;
-    }
-
-    public String getCreate_At() {
-        if(this.createdAt != null){
-            return DateTimeHelper.convertLocalDateTimeToString(this.createdAt);
-        }
-        return "";
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productId='" + productId + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", thumbnail='" + thumbnail + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", status=" + status +
-                '}';
     }
 }
