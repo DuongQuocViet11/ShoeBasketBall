@@ -54,7 +54,7 @@ public class CreateProductServlet extends HttpServlet {
         product.setThumbnail(thumbnail);
         product.setPrice(price);
 
-        if(product.isValid()){
+        if(!product.isValid()){
             req.setAttribute("categories", categoryModel.findAll());
             req.setAttribute("obj", product);
             req.setAttribute("action", 1);
