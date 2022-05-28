@@ -43,4 +43,12 @@
         <servlet-name>EditProductServlet</servlet-name>
         <url-pattern>/admin/products/edit</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>HomeUserServlet</servlet-name>
+        <servlet-class>com.shoebasketball.shoebasketball.controller.user.HomeUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeUserServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
 </web-app>

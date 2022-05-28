@@ -63,6 +63,7 @@ public class Product extends BaseEntity {
         this.status = ProductStatus.ACTIVE;
     }
 
+
     @Override
     public String toString() {
         return "Product{" +
